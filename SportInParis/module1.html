@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadata of the Webpage -->
+    <!-- Character-set Metadata -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Viewport Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+    <style>
+ 
+      /* Styling the Body element i.e. Color,
+      Font, Alignment */
+      body {
+          background-color: #05c46b;
+          font-family: Verdana;
+          text-align: center;
+      }
+
+      /* Styling the Form (Color, Padding, Shadow) */
+      form {
+          background-color: #fff;
+          max-width: 500px;
+          margin: 50px auto;
+          padding: 30px 20px;
+          box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Styling form-control Class */
+      .form-control {
+          text-align: left;
+          margin-bottom: 25px;
+      }
+
+      /* Styling form-control Label */
+      .form-control label {
+          display: block;
+          margin-bottom: 10px;
+      }
+
+      /* Styling form-control input,
+      select, textarea */
+      .form-control input,
+      .form-control select,
+      .form-control textarea {
+          border: 1px solid #777;
+          border-radius: 2px;
+          font-family: inherit;
+          padding: 10px;
+          display: block;
+          width: 95%;
+      }
+
+      /* Styling form-control Radio
+      button and Checkbox */
+      .form-control input[type="radio"],
+      .form-control input[type="checkbox"] {
+          display: inline-block;
+          width: auto;
+      }
+
+      /* Styling Button */
+      button {
+          background-color: #05c46b;
+          border: 1px solid #777;
+          border-radius: 2px;
+          font-family: inherit;
+          font-size: 21px;
+          display: block;
+          width: 100%;
+          margin-top: 50px;
+          margin-bottom: 20px;
+      }
+  </style>
+
+<script type="text/javascript">
+  function motMaj(){
+      var nomsaisie = document.getElementById("nom").value;
+      var nommodifier = nomsaisie.toUpperCase();
+      document.getElementById("nom").value=nommodifier
+
+  }
+</script>
+
+    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Webpage Logo -->
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <!-- Webpage Title -->
+    <title>SportInParis</title>
+
+    <!-- Import CSS: Main Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    
+  </head>
+
+<div id="particles-js">
+    <div class="header">
+        <h1>
+          <span class="site-title">SportInParis</span>
+          <span class="site-description">Faire du sport, c'est super simple maintenant</span>
+        </h1>
+    
+        <div class="header-links">
+          <a class="link" href="#projects" data-scroll>Nos projets</a>
+        </div>
+      </div>
+    <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+  </div>
+
+
+
+  <body>
+    <h1>Enquete de satisfaction SportInParis</h1>
+      <h2>Veuillez repondre aux questions suivante : </h2>
+    <form id="form" action="GET">
+ 
+      <!-- Details -->
+      <div class="form-control">
+          <label for="name" id="label-name"  >
+              Nom
+          </label>
+
+          <!-- Input Type Text -->
+          <input type="text"
+                 id="nom"
+                
+                 placeholder="Entrez votre nom" required="required" onblur="motMaj()"/>
+      </div>
+
+      <div class="form-control">
+          <label for="email" id="label-email">
+              Email
+          </label>
+
+          <!-- Input Type Email-->
+          <input type="email"
+                 id="email"
+                 placeholder="Entrez votre email" required="required" />
+      </div>
+
+      <div class="form-control">
+          <label for="age" id="label-age">
+              Age
+          </label>
+
+          <!-- Input Type Text -->
+          <input type="number"
+                 id="age"
+                 placeholder="Entrez votre age" required="required" />
+      </div>
+
+      <div class="form-control">
+          <label for="role" id="label-role">
+              Statut actuel ?
+          </label>
+           
+          <!-- Dropdown options -->
+          <select name="role" id="role" required="required">
+              <option value="Etudiant">Etudiant</option>
+              <option value="Salarie1">Jeune Salarie(<35ans) </option>
+              <option value="Salarie2">Salarie Adulte(>35 ans) </option>
+              <option value="Chomage">Sans emploi (>35 ans) </option>
+              <option value="other">Autre</option>
+          </select>
+      </div>
+
+      <div class="form-control" required="required">
+        <label>
+            Votre fréquece d'utilisation de la plateforme 
+        </label>
+
+        <!-- Input Type Radio Button -->
+        <label for="manyByWeek">
+            <input type="radio"
+                   id="manyByWeek"
+                   name="manyByWeek">Plus d'une fois par semaine</input>
+        </label>
+        <label for="1ByWeek">
+            <input type="radio"
+                   id="1ByWeek"
+                   name="1ByWeek">1 fois par semaine </input>
+        </label>
+        <label for="1ByMonth">
+          <input type="radio"
+                 id="1ByMonth"
+                 name="1ByMonth">Au moins 1 fois par mois</input>
+      </label>
+      <label for="1ByMonth2">
+        <input type="radio"
+               id="1ByMonth2"
+               name="1ByMonth2">Rarement</input>
+    </label>
+    </div>
+
+      <div class="form-control" required="required">
+          <label>Quel sport pratiquez vous via notre plateforme
+              <small>(Check all that apply)</small>
+          </label>
+          <!-- Input Type Checkbox -->
+          <label for="inp">
+              <input type="checkbox"
+                     name="Football">Football</input></label>
+          <label for="inp-2">
+              <input type="checkbox"
+                     name="Volleyball">Volleyball</input></label>
+          <label for="inp-3">
+              <input type="checkbox"
+                     name="BasketBall">BasketBall</input></label>
+          <label for="inp-4">
+              <input type="checkbox"
+                     name="HandBall">HandBall</input></label>
+          <label for="inp-5">
+              <input type="checkbox"
+                     name="Tenis">Tenis</input></label>
+          <label for="inp-6">
+              <input type="checkbox"
+                     name="Musculation">Musculation</input></label>
+          <label for="inp-7">
+              <input type="checkbox"
+                     name="Other">Autre</input></label>
+      </div>
+
+      <div class="form-control" >
+          <label for="comment">
+              Un commentaire ou une suggestion
+          </label>
+
+          <!-- multi-line text input control -->
+          <textarea name="comment" id="comment"
+              placeholder="Entrez votre commentaire ici">
+          </textarea>
+      </div>
+
+      <!-- Multi-line Text Input Control -->
+      <button type="submit" value="submit" action="">
+          Envoyer
+      </button>
+  </form>
+  </body>
+
+  <footer class="footer">
+    <p>&copy; Husseine, Paul, Romain, 2020</p>
+  </footer>
+
+  </html>
