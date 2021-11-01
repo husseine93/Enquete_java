@@ -5,8 +5,61 @@
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="style2.css">
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script> 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>  
+  <style>
+    body {
+  font-family: 'Roboto';
+  color: #333;
+  background-color: #F9F7EB;
+}
+
+#title {
+  font-family: 'Merriweather';
+  text-align: center;
+  padding: 30px;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: #333;
+}
+
+#legend {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px 10px;
+  font-size: 12px;
+}
+
+#legend .item {
+  line-height: 12px;
+  padding: 0 10px 0 4px;
+}
+
+#legend .item.male {
+  border-left: 12px solid #19A0AA;
+}
+
+#legend .item.female {
+  border-left: 12px solid #F15F36;
+}
+
+
+#chart-wrapper {
+  height: 1000px;
+}
+
+#footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+#footer a {
+  color: #aaa;
+}
+  </style>
 </head>
 <body>
  
@@ -16,113 +69,45 @@
 
 
      
-<br>
-      <div class="chart_container2" id="chart2">
-          <canvas id="myChart2"></canvas>
-      </div>
+<canvas id="chart"></canvas>
+
+
+</body>
+
 <script>
-  
-function makeChart2(Participants) {
-  // Participants is an array of objects where each object is something like:
-  // {
-  //   "Name": "Steffi Graf",
-  //   "ages": "377",
-  //   "Gender": "Female"
-  // }
-  var ParticipantLabels = Participants.map(function(d) {return d._nom});
-  var moyenneData = Participants.map(function(d) {return +d.moyenne});
-  var ParticipantColors = Participants.map(function(d) {return d.genre === 'Female' ? '#F15F36' : '#19A0AA';});
-
-  var chart = new Chart('myChart2', {
-    type: 'line',
-    options: {
-      maintainAspectRatio: false,
-      legend: {
-        display: true
-      },
-      scales: {
-        xAxes: [
-          {
-               
-            
-        
-                scaleLabel: {
-              display: true,
-              labelString: 'La moyenne Par Personne et par genre' ,
-              fontSize: 40
-            }
-          }
-        ]
-      }
-    },
-    data: {
-      labels: ParticipantLabels,
-      datasets: [
-        {
-          data: moyenneData,
-          backgroundColor: ParticipantColors
-        }
-      ]
-    }
-  })
-}
-
-// Request data using D3
-d3.csv("http://localhost/formulaire_js/formulaireJs/atp_wta.csv")
-  .then(makeChart2);
-</script>
-
-
-<div id="legend">
-  <div class="item female">Women</div>
-  <div class="item male">Men</div>
-</div>
-<div class="allGraph">
-<div id="chart-wrapper">
-  <canvas id="chart" style="width: 400px;height: 200px;"></canvas>
-</div>
-
-<script type="text/javascript">
   Chart.defaults.global.defaultFontFamily = 'Roboto';
 Chart.defaults.global.defaultFontColor = '#333';
 
-function makeChart(Participants) {
-  // Participants is an array of objects where each object is something like:
-  // {
-  //   "Name": "Steffi Graf",
-  //   "ages": "377",
-  //   "Gender": "Female"
-  // }
-
-  var ParticipantLabels = Participants.map(function(d) {return d._nom});
-  var agesData = Participants.map(function(d) {return +d.age});
-  var ParticipantColors = Participants.map(function(d) {return d.genre === 'Female' ? '#F15F36' : '#19A0AA';});
+function makeChart(players) {
+  var playerLabels = players.map(function(d) {return d.Nom});
+  var weeksData = players.map(function(d) {return + d.moyenne});
+  var playerColors = players.map(function(d) {return d.Genre === 'Femme' ? '#F15F36' : '#19A0AA';});
 
   var chart = new Chart('chart', {
     type: 'horizontalBar',
     options: {
       maintainAspectRatio: false,
       legend: {
-        display: true
+        display: false
       },
       scales: {
         xAxes: [
           {
             scaleLabel: {
               display: true,
-              labelString: 'Age et genrs des participants' ,
-              fontSize: 40
+              labelString: 'Score en fonction du nom',
+              fontSize: 16
             }
           }
         ]
       }
     },
     data: {
-      labels: ParticipantLabels,
+      labels: playerLabels,
       datasets: [
         {
-          data: agesData,
-          backgroundColor: ParticipantColors
+          data: weeksData,
+          backgroundColor: playerColors
         }
       ]
     }
@@ -130,10 +115,7 @@ function makeChart(Participants) {
 }
 
 // Request data using D3
-d3.csv("http://localhost/formulaire_js/formulaireJs/atp_wta.csv")
+d3.csv('http://localhost/SportInParisRom/atp_wta.csv')
   .then(makeChart);
 </script>
-
-
-</body>
 </html>
