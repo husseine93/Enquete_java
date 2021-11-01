@@ -1,0 +1,76 @@
+body {
+  font-family: 'Roboto';
+  color: #333;
+  
+  background-size: cover;
+}
+
+#title {
+  font-family: 'Merriweather';
+  text-align: center;
+ margin: auto;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: #333;
+ padding: auto;
+  background-color:white;
+border-radius: 50px;
+width: 400px;
+height: 50px;
+}
+
+#legend {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 10px 10px;
+  font-size: 12px;
+  background:white;
+  padding:10px 10px ;
+   width: min-content;
+
+}
+
+#legend .item {
+  line-height: 12px;
+  padding: 0 10px 0 4px;
+}
+
+#legend .item.male {
+  border-left: 12px solid #19A0AA;
+}
+
+#legend .item.female {
+  border-left: 12px solid #F15F36;
+}
+
+
+#chart-wrapper {
+  display: flex;
+  height: 900px;
+  width: 1500px;
+}
+
+canvas {
+  border: 3px dotted black;
+  background:white;
+  display: flex;
+}
+
+
+.allGraph{
+   display: column;
+  justify-content: space-between;
+  border-radius: 50px;
+  vertical-align: top;
+}
+
+#myChart2{
+  height: 500px;
+  width: 1500px;
+
+}
+.chartjs-render-monitor{
+  width: 400px;
+}
+
+

@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <link href='Style2A.css' rel='stylesheet' type='text/css' />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    </head> 
+    <script>
+
+        function psuivant(){
+            document.location.href="Quest2.html"
+        }
+
+
+        function precedent(){
+            document.location.href="Questionnaire.html"
+        }
+            </script>
+    <body>
+        
+    </br></br>
+    <div class="class">
+        <fieldset>
+  Bonjour , <span id=span1></span> <span id=span2></span>
+        </br>
+   Score : <span id=span3></span> 
+    </fieldset>
+    
+</div>
+</br>
+
+<div class="page2">
+    <form name="form1">
+        <div class="classy">
+        <fieldset>
+            <legend>Question 3</legend>
+                <label class="quest"> Comment jugez-vous les différentes prises en charge proposées ?</label>
+                 </br><br>
+            <label>
+                <input type="radio" name="qust" id="choix1" value="Très satisfaisant"  checked>
+                <span class="design"></span>
+                <span class="text">Très satisfaisant </span>
+            </label>
+                </br><br>
+             <label>
+                <input type="radio" name="qust" id="choix2" value="Moyennement" onClick="q1=10">
+                 <span class="design"></span>
+                <span class="text"> Moyennement satisfaisant</span>
+             </label>
+            </br><br>
+            <label>
+                 <input type="radio" name="qust" id="choix3" value="Peu"  onClick="q1=5">
+                  <span class="design"></span>
+                  <span class="text"> Peu satisfaisant</span>
+            </label>
+        </fieldset>
+        <br/><br/>
+    </div>
+    <div class="classy">
+        <fieldset>
+            <legend>Question 4</legend>
+           
+                <div class="dropdown">
+                    <label>Globalement, dans quelle mesure êtes-vous satisfaits  ?</label>
+                    </br><br><br>
+                    <SELECT NAME="Liste" id="select" >
+                        <option value="4">Très bon</option>
+                        <option value="3">Bon</option>
+                        <option value="2">Moyen</option>
+                        <option value="1">Mauvais</option>
+                    </select>
+                </div>
+                <br></br>
+            
+
+                
+        </fieldset>
+
+        <div>
+            <input type="button" name="valid_inscr" id="bouton_envoi2" class="input_form" value="Précédent" onclick="getCookie(), precedent()" />    
+            <input type="button" name="valid_inscr" id="bouton_envoi2" class="input_form" value="Suivant" onclick="calcul3(form1),calcul4(),moy(),psuivant()" />
+    </div>
+    
+    </form>
+ 
+    </body>
+
+ 
+    <script>
+        /*FOnction qui permet de recuperer la valeur d'un cookie*/
+/*FOnction qui permet de recuperer la valeur d'un cookie*/
+function getCookie(name){
+      if(document.cookie.length == 0)
+        return null;
+
+      var regSepCookie = new RegExp('(; )', 'g');
+      var cookies = document.cookie.split(regSepCookie);
+
+      for(var i = 0; i < cookies.length; i++){
+        var regInfo = new RegExp('=', 'g');
+        var infos = cookies[i].split(regInfo);
+        if(infos[0] == name){
+             return unescape (infos[1]);
+        }
+      }
+      return null;
+    }
+  /*on insere les valeur de cookies dans les input dont les ID sont 'session-nom' et 'session-prenom'*/
+  var prenom = document.getElementById('span1').innerHTML = getCookie('_prenom');
+  var nom = document.getElementById('span2').innerHTML = getCookie('_nom');
+  var note = document.getElementById('span3').innerHTML = getCookie('note');
+
+  function calcul3(form1){
+    if (form1.qust[0].checked)
+    {
+    document.cookie= "_note3=" + parseInt(4);
+    }else if (form1.qust[1].checked)
+    {
+    document.cookie= "_note3=" +parseFloat(3);
+    }else 
+    {
+    document.cookie= "_note3=" +parseFloat(1);
+    }
+
+  }
+  function calcul4(){
+  var oSelect = document.getElementById("select").value;
+    document.cookie="_note4=" + oSelect;
+  }
+
+  function moy(){
+    var note = parseInt (getCookie('_note3'));
+  var note = note + parseInt (getCookie('_note4'));
+  var note = note + parseInt (getCookie('note'));
+  document.cookie ="note=" +note;
+  }
+
+
+ 
+
+
+</script>
+ 
+ 
+    </html>
