@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <link href='Style2A.css' rel='stylesheet' type='text/css' />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    </head> 
+    <script>
+
+        function psuivant(){
+            document.location.href="Commentaire.html"
+        }
+
+
+        function precedent(){
+            document.location.href="Quest1.html"
+        }
+            </script>
+    <body>
+    <div class="class">
+        <fieldset>
+  Bonjour , <span id=span1></span> 
+    <span id=span2></span>
+        </br>
+    Score : <span id=span3></span> 
+    </fieldset>
+    
+</div>
+</br>
+<div class="page3">
+    <form name="form1">
+        <div class="classy">
+        <fieldset>
+            <legend>Question 4</legend>
+            <label class="quest"> Comment trouvez la tarification de nos soins ? </label></br>
+            <INPUT TYPE="CHECKBOX" NAME="check1" VALUE="1">Inacceptable<BR>
+                <INPUT TYPE="CHECKBOX" NAME="check2" VALUE="2">Cher<BR>
+                <INPUT TYPE="CHECKBOX" NAME="check3" VALUE="3" checked>Conveable<BR>
+                <INPUT TYPE="CHECKBOX" NAME="check4" VALUE="4">Bon marché<BR>
+        </fieldset>
+        </div>
+
+    </fieldset>
+
+    <div class="classy">
+        <fieldset>
+            <legend>Question 5</legend>
+            <label class="quest"> Que pensez vous de l'accessibilité du cabinet médical ? </label></br>
+            <INPUT TYPE="CHECKBOX" NAME="chec1" VALUE="5">Excellent<BR>
+                <INPUT TYPE="CHECKBOX" NAME="chec2" checked VALUE="4">Bon<BR>
+                <INPUT TYPE="CHECKBOX" NAME="chec3" VALUE="3">Moyen<BR>
+                <INPUT TYPE="CHECKBOX" NAME="chec4" VALUE="2">Faible<BR> 
+                 <INPUT TYPE="CHECKBOX" NAME="chec5" VALUE="1">Mauvais<BR>
+        </fieldset>
+        </div>
+    <div class="div_input_fo">
+        <input type="button" name="valid_inscr" id="bouton_envoi2" class="input_form" value="Précédent" onclick="precedent(),retour()" />
+        <input type="button" name="valid_inscr" id="bouton_envoi2" class="input_form" value="Suivant" onclick="calcul5(form1), calcul6(form1), moy(), psuivant(),moyenne()" />
+            </div>
+        </br>
+    </form>
+    </body>
+    <script>
+              /*FOnction qui permet de recuperer la valeur d'un cookie*/
+/*FOnction qui permet de recuperer la valeur d'un cookie*/
+function getCookie(name){
+      if(document.cookie.length == 0)
+        return null;
+
+      var regSepCookie = new RegExp('(; )', 'g');
+      var cookies = document.cookie.split(regSepCookie);
+
+      for(var i = 0; i < cookies.length; i++){
+        var regInfo = new RegExp('=', 'g');
+        var infos = cookies[i].split(regInfo);
+        if(infos[0] == name){
+             return unescape (infos[1]);
+        }
+      }
+      return null;
+    }
+  /*on insere les valeur de cookies dans les input dont les ID sont 'session-nom' et 'session-prenom'*/
+  var prenom = document.getElementById('span1').innerHTML = getCookie('_prenom');
+  var nom = document.getElementById('span2').innerHTML = getCookie('_nom');
+  var note = document.getElementById('span3').innerHTML = getCookie('note');
+
+function calcul5(form1){
+if (form1.check1.checked){
+    document.cookie= "_note5=" + parseInt(1);
+}else if(form1.check2.checked){
+    document.cookie= "_note5=" + parseInt(2);
+}else if(form1.check3.checked){
+    document.cookie= "_note5=" + parseInt(3);
+}else{
+    document.cookie= "_note5=" + parseInt(5);
+}
+}
+
+
+function calcul6(form1){
+if (form1.chec1.checked){
+    document.cookie= "_note6=" + parseInt(5);
+}else if(form1.chec2.checked){
+    document.cookie= "_note6=" + parseInt(4);
+}else if(form1.chec3.checked){
+    document.cookie= "_note6=" + parseInt(3);
+}else if(form1.chec4.checked) {
+    document.cookie= "_note6=" + parseInt(2);
+}else{
+    document.cookie= "_note6=" + parseInt(1);
+}
+}
+
+
+function moy(){
+var note = parseInt (getCookie('_note5'));
+  var note = note + parseInt (getCookie('_note6'));
+  var note = note + parseInt (getCookie('note'));
+  document.cookie ="note=" +note;
+  }
+
+
+  
+function moyenne(){
+var note = parseInt (getCookie('note'));
+var note = (note / 3);
+var note = Math.round(note);
+
+document.cookie= "moyenne="+ note;
+}
+
+
+ function retour(){
+ var note3 = getCookie('_note');
+ var note4 = getCookie('_note2');
+ var note = getCookie('note');
+ 
+note = parseInt(note3) + parseInt(note4);
+document.cookie ="note=" +note;
+ }
+
+
+
+
+</script>
+</html>

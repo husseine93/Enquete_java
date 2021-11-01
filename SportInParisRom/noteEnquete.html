@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+   <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>questionnaire</title>
+    </head>
+    <body>
+
+       <link rel="stylesheet" type="text/css" href="Style3A.css">
+       <link rel="stylesheet" type="text/css" href="style2A.css">
+       <header>
+           
+
+       <div id="calqueNoterYoutubeurPrincipal">
+           <div id="calqueNoterYoutubeurOmbre"></div>
+            <div id="calqueNoterYoutubeur4">
+                <p id="questionNoter4">Comment trouvez-vous  notre enquete ?</p>
+                <br>
+                <div class="rating4" id="etoile">
+                    <button class="c3" onmouseleave="cacherCalqueInfo4()" type="button" name="starc45" id="starc45" value="1">★</button>
+                    <button class="c3" id="starc44" value="2">★</button>
+                    <button class="c3" type="button" name="starc43" id="starc43" value="3">★</button>
+                    <button class="c3" type="button" name="starc42" id="starc42" value="4">★</button>
+                    <button class="c3" value="5" name="starc41" id="starc41">★</button>
+                </div>
+                <div class="div_input_form" style="text-align: center; width: 100%">
+
+        <input type="button" name="valid_envoyer" id="bouton_envoi2" class="input_form" value="Voir Le tableau de bord" onclick="psuivant(),etoile()" style="margin-left: auto;margin-right: auto; margin-top:250px ; " />
+        
+    </div>
+</div>
+</body>
+
+<script>
+   function psuivant(){
+            document.location.href="tableaubord.html"
+        }
+
+
+    function etoile(){
+        var nbEtoile = getElementById("etoile").value;
+        document.cookie="noteEtoile = "+nbEtoile;
+    }
+    
+    </script>
+    
+        <script src="jquery_3_4_1.js"></script>
+        <script src="codejsntytfNoteY.js"></script>
+    </body>
+</html>
